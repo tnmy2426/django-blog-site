@@ -15,6 +15,11 @@ class Blog(models.Model):
     class Meta:
         ordering = ['-publish_date',]
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.blog_title)
+        super(Blog, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.blog_title
 
