@@ -1,38 +1,36 @@
-{% extends 'base.html' %}
-{% block title_block %} Profile {% endblock %}
-{% block style %}
-  <style>
-    .profile_heading {
-      font-size: 40px;
-      color: #95103B;
-    }
-    p{
-        font-size: 20px;
-        color: #323639;
-    }
-  </style>
-{% endblock style %}
-{% block body_block %}
-    <div class="text-center">
-        <h2 class= "profile_heading">Your Profile</h2>
-        <br>
-{% if user.user_profile %}
-        <img src='/media/{{user.user_profile.profile_pic}}' class="rounded-circle" width="200px">
-        <br>
-        <br>
-        <a href="{% url 'App_Login:change_pro_pic' %}" class="btn btn-info btn-md">Change Profile Picture</a>
-{% else %}
-        <img src='/media/profile_pics/avatar-male.jpg' class="rounded-circle" width="200px">
-        <br>
-        <br>
-        <a href="{% url 'App_Login:add_pro_pic' %}" class="btn btn-info btn-md">Change Profile Picture</a>
-{% endif %}
-        <br>
-        <br>
-        <p>Username: {{ user.username }}</p>
-        <p>Email: {{ user.email }}</p>
-        <p>Name: {{user.first_name }} {{ user.last_name }}</p>
-        <br>
-        <a href="{% url 'App_Login:user_change' %}" class="btn btn-warning btn-md">Change Profile Info</a>
-    </div>
+{% extends 'base.html' %} {% block title_block %} Profile {% endblock %} {% block style %}
+<style>
+  .profile_heading {
+    font-size: 40px;
+    color: #95103b;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 20px;
+    color: #323639;
+  }
+</style>
+{% endblock style %} {% block body_block %}
+<div class="text-center">
+  <h2 class="profile_heading">Your Profile</h2>
+  <br />
+  {% if user.user_profile %}
+  <img src="/media/{{user.user_profile.profile_pic}}" class="rounded-circle" width="200px" />
+  <br />
+  <br />
+  <a href="{% url 'App_Login:change_pro_pic' %}" class="btn btn-info btn-md">Change Profile Picture</a>
+  {% else %}
+  <img src="/media/profile_pics/avatar-male.jpg" class="rounded-circle" width="200px" />
+  <br />
+  <br />
+  <a href="{% url 'App_Login:add_pro_pic' %}" class="btn btn-info btn-md">Change Profile Picture</a>
+  {% endif %}
+  <br />
+  <br />
+  <p>Username: {{ user.username }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+  <br />
+  <a href="{% url 'App_Login:user_change' %}" class="btn btn-warning btn-md">Change Profile Info</a>
+</div>
 {% endblock %}

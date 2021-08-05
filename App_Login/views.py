@@ -5,6 +5,8 @@ from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from App_Login.forms import SignUpForm, UserProfileChange, ProfilePic
+
+from django.contrib import messages
 # Create your views here.
 
 
@@ -16,7 +18,7 @@ def sign_up(request):
         if form.is_valid():
             form.save()
             registered = True
-
+            messages.success(request, "Registered Successfully. Please Login!")
     dict = {'form':form, 'registered':registered}
     return render(request, 'App_Login/signup.html', context=dict)
 
@@ -30,12 +32,16 @@ def login_page(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                messages.success(request, "Logged in")
                 return HttpResponseRedirect(reverse('index'))
+            else:
+                messages.error(request, "Username or Password Incorrect!!")
     return render(request, 'App_Login/login.html', context={'form':form})
 
 @login_required
 def logout_user(request):
     logout(request)
+    messages.success(request, "You have been logged out successfully!")
     return HttpResponseRedirect(reverse('index'))
 
 @login_required
@@ -51,6 +57,8 @@ def user_change(request):
         if form.is_valid():
             form.save()
             form = UserProfileChange(instance=current_user)
+            messages.success(request, "Information Updated Successfully!!")
+            return HttpResponseRedirect(reverse('App_Login:profile'))
     return render(request, 'App_Login/change_profile.html', context={'form':form})
 
 @login_required
@@ -63,6 +71,7 @@ def pass_change(request):
         if form.is_valid():
             form.save()
             changed = True
+            messages.success(request, "You have successfully changed your password!!")
     return render(request, 'App_Login/pass_change.html', context={'form':form, 'changed':changed})
 
 @login_required
@@ -74,6 +83,7 @@ def add_pro_pic(request):
             user_obj = form.save(commit=False)
             user_obj.user = request.user
             user_obj.save()
+            messages.success(request, "Profile Picture Added Successfully!!")
             return HttpResponseRedirect(reverse('App_Login:profile'))
     return render(request, 'App_Login/pro_pic_add.html', context={'form':form})
 
@@ -84,5 +94,6 @@ def change_pro_pic(request):
         form = ProfilePic(request.POST, request.FILES, instance=request.user.user_profile)
         if form.is_valid():
             form.save()
+            messages.success(request, "Profile picture changed successfully!!")
             return HttpResponseRedirect(reverse('App_Login:profile'))
     return render(request, 'App_Login/pro_pic_add.html', context={'form':form})
