@@ -72,6 +72,7 @@ def pass_change(request):
             form.save()
             changed = True
             messages.success(request, "You have successfully changed your password!!")
+            return HttpResponseRedirect(reverse('App_Login:login'))
     return render(request, 'App_Login/pass_change.html', context={'form':form, 'changed':changed})
 
 @login_required
