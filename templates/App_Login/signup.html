@@ -1,27 +1,33 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block title_block %} Registration {% endblock %}
-{% block style %}
-  <style>
-    .signup_page_heading {
-      font-size: 40px;
-      color: #95103B;
-    }
-  </style>
-{% endblock style %}
-{% block body_block %}
-{% if registered %}
-  <div class="alert alert-success">
-    Account Created Successfully! <a href="{% url 'App_Login:login' %}">Login Here</a>
-  </div>
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title_block %} Registration {% endblock %} {% block style %}
+<style>
+  .signup_page {
+    width: 800px;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-left: 40px;
+    border: 1px solid #323639;
+  }
+  .signup_page_heading {
+    font-size: 40px;
+    color: #95103b;
+    font-family: "Overpass", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+</style>
+{% endblock style %} {% block body_block %} {% if registered %}
+<div class="alert alert-success">Account Created Successfully! <a href="{% url 'App_Login:login' %}">Login Here</a></div>
 {% else %}
-  <h2 class="text-center signup_page_heading">Create New Account</h2>
+<h2 class="text-center signup_page_heading mb-3">Create New Account</h2>
+<div class="signup_page mx-auto">
   <form method="POST">
-    {{ form|crispy }}
-    {% csrf_token %}
+    {{ form|crispy }} {% csrf_token %}
     <button type="submit" class="btn btn-success btn-md">Create Account</button>
   </form>
-  <br>
-  <p>Already have an account? <a href="{% url 'App_Login:login' %}">Login Here</a></p>
-{% endif %}
-{% endblock %}
+  <br />
+  <div class="text-center">
+    <p>Already have an account? <a href="{% url 'App_Login:login' %}">Login Here</a></p>
+  </div>
+</div>
+
+{% endif %} {% endblock %}

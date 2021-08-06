@@ -18,7 +18,7 @@ def sign_up(request):
         if form.is_valid():
             form.save()
             registered = True
-            messages.success(request, "Registered Successfully. Please Login!")
+            # messages.success(request, "Registered Successfully. Please Login!")
     dict = {'form':form, 'registered':registered}
     return render(request, 'App_Login/signup.html', context=dict)
 

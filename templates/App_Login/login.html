@@ -1,19 +1,31 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block title_block %} Login {% endblock %}
-{% block style %}
-  <style>
-    .login_page_heading {
-      font-size: 40px;
-      color: #95103B;
-    }
-  </style>
-{% endblock style %}
-{% block body_block %}
-    <h2 class="login_page_heading text-center">Login:</h2>
-    <form method="POST">
-        {{form|crispy}}
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary btn-md">Login</button>
-    </form>
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title_block %} Login {% endblock %} {% block style %}
+<style>
+  .login_page {
+    width: 500px;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-left: 40px;
+    border: 1px solid #323639;
+  }
+
+  .login_page_heading {
+    font-size: 40px;
+    color: #95103b;
+    font-family: "Overpass", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+</style>
+{% endblock style %} {% block body_block %}
+<h2 class="login_page_heading text-center mb-3">Login</h2>
+<div class="login_page mx-auto">
+  <form method="POST">
+    {{form|crispy}} {% csrf_token %}
+    <button type="submit" class="btn btn-primary btn-md">Login</button>
+  </form>
+  <div class="text-center mt-5">
+    <p>Don't have an account? <a href="{% url 'App_Login:signup' %}">Signup Here.</a></p>
+  </div>
+</div>
+
 {% endblock %}
