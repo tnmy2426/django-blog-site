@@ -1,29 +1,28 @@
-
-<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd">
   <div class="container">
-    <a class="navbar-brand" href="{% url 'App_Blog:blog_list' %}"><span>T</span>our<span>G</span>enics</a>
-      <ul class="navbar-nav ml-auto p-3">
-        {% if user.is_authenticated %}
-        <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: #95103B">
-            @{{user.username}}
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="{% url 'App_Blog:create_blog' %}">Write Blog</a>
-            <a class="dropdown-item" href="{% url 'App_Blog:my_blogs' %}">My Blogs</a>
-            <a class="dropdown-item" href="{% url 'App_Login:profile' %}">Your Profile</a>
-            <hr>
-            <a class="dropdown-item" href="{% url 'App_Login:logout' %}">Logout</a>
-          </div>
+    <a class="navbar-brand" href="{% url 'App_Blog:blog_list' %}"> <span>T</span>our<span>G</span>enics</a>
+    <ul class="navbar-nav ml-auto p-3">
+      {% if user.is_authenticated %}
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: #95103b">
+          @{{user.username}}
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'App_Blog:create_blog' %}">Write Blog</a>
+          <a class="dropdown-item" href="{% url 'App_Blog:my_blogs' %}">My Blogs</a>
+          <a class="dropdown-item" href="{% url 'App_Login:profile' %}">Your Profile</a>
+          <hr />
+          <a class="dropdown-item" href="{% url 'App_Login:logout' %}">Logout</a>
         </div>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'App_Login:signup' %}" id="signupButton">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'App_Login:login' %}" id="loginButton">Login</a>
-        </li>
-        {% endif %}
-      </ul>
+      </div>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'App_Login:signup' %}" id="signup_btn">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'App_Login:login' %}" id="login_btn">Login</a>
+      </li>
+      {% endif %}
+    </ul>
   </div>
 </nav>

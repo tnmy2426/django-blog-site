@@ -26,13 +26,13 @@ h1 {
   color: #323639;
 }
 .navbar-brand > span {
-  font-size: 35px;
-  color: #95103b;
+  font-size: 35px !important;
+  color: #95103b !important;
 }
 
-#signupButton {
+#signup_btn {
   color: #323639;
-  border: 1px solid #95103b;
+  border: 1px solid #95103b !important;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -44,11 +44,11 @@ h1 {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
-#signupButton:hover {
+#signup_btn:hover {
   background-color: #95103b;
   color: #ffff;
 }
-#loginButton {
+#login_btn {
   color: #323639;
   margin-left: 10px;
   border: 1px solid #95103b;
@@ -63,7 +63,7 @@ h1 {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
-#loginButton:hover {
+#login_btn:hover {
   background-color: #95103b;
   color: #ffff;
 }
