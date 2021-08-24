@@ -21,7 +21,7 @@ class CreateBlog(LoginRequiredMixin, CreateView):
         blog_obj = form.save(commit=False)
         blog_obj.author = self.request.user
         title = blog_obj.blog_title
-        blog_obj.slug = title.replace(" ", "-") + "-" + str(uuid.uuid4())
+        # blog_obj.slug = title.replace(" ", "-") + "-" + str(uuid.uuid4())
         blog_obj.save()
         return HttpResponseRedirect(reverse('index'))
 
