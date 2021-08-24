@@ -9,12 +9,16 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  color: #323639;
 }
 
 h1 {
   font-family: "Overpass", sans-serif;
   text-transform: uppercase;
   font-weight: 800;
+}
+a {
+  text-decoration: none;
 }
 
 /* ///////////Navbar Design/////////////////// */
