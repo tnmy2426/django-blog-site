@@ -1,51 +1,78 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block title_block %} {{blog.blog_title}} {% endblock %}
-{% block body_block %}
-<div class="row">
-  <div class="col-sm-6">
-    <h2>{{blog.blog_title}}</h2>
-    <h4>Posted By: @{{blog.author}}</h4>
-    <i><h6>Published On: {{blog.publish_date}}</h6></i>
-    <i><h6>Updated On: {{blog.update_date}}</h6></i>
-    <h6>{{blog.liked_blog.count}} Likes | {{blog.blog_comment.count}} Comments</h6>
-  </div>
-  <div class="col-sm-6">
-    <img src="/media/{{blog.blog_image}}" width="100%">
-  </div>
-  <p>
-    {{blog.blog_content|linebreaks}}
-  </p>
-  <hr>
-
-  </div>
-  {% if not liked %}
-  <a href="{% url 'App_Blog:liked_post' pk=blog.pk %}">
-    <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i>
-  </a>
-  {% else %}
-  <a href="{% url 'App_Blog:unliked_post' pk=blog.pk %}">
-    <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i>
-  </a>
-  {% endif %}
-  <div class="row">
-    <div class="col-sm-6">
-      <hr>
-      <h5>Comments:</h5>
-      {% for comment in blog.blog_comment.all %}
-      <p><a href="#">@{{comment.user}}</a> {{comment.comment}}<br><h6>{{comment.comment_date}}</h6></p>
-      {% endfor %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block style %}
+<style>
+  #comment_user {
+    text-decoration: none;
+    color: #95103b;
+  }
+</style>
+{% endblock style %} {% block title_block %} {{blog.blog_title}} {% endblock %} {% block body_block %}
+<div class="mb-1">
+  <div class="card bg-dark text-white">
+    <img class="card-img" src="/static/img/Dhaka.jpg" alt="Card image" />
+    <div class="card-img-overlay text-center mt-5" style="color: #323639">
+      <h5 class="card-title display-4 mt-5 font-weight-bold">{{blog.blog_title}}</h5>
+      <p class="card-text"><i class="fas fa-user mr-1"></i> {{blog.author}} | {{blog.publish_date}}</p>
     </div>
-    <div class="col-sm-6">
+  </div>
+</div>
+
+<div class="mb-5">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4" style="color: #95103b">{{blog.liked_blog.count}} Likes | {{blog.blog_comment.count}} Comments</div>
+        <div class="col-4 text-center">
+          {% if not liked %}
+          <a href="{% url 'App_Blog:liked_post' pk=blog.pk %}" style="color: #95103b">
+            <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i>
+          </a>
+          {% else %}
+          <a href="{% url 'App_Blog:unliked_post' pk=blog.pk %}" style="color: #95103b">
+            <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i>
+          </a>
+          {% endif %}
+        </div>
+        <div class="col-4"><p class="text-right mb-0">Last Updated: {{blog.update_date}}</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-5">
+  <div class="card">
+    <div class="card-body" style="color: #323639">
+      <h2 class="card-title text-center">{{blog.blog_title}}</h2>
+      <hr class="my-4" />
+      <p class="card-text">{{blog.blog_content|linebreaks}}</p>
+      <br />
+    </div>
+    <img class="card-img-top img-fluid" src="/media/{{blog.blog_image}}" alt="Blog Image" />
+  </div>
+</div>
+<hr class="my-4" />
+<div class="comment">
+  <div class="row">
+    <div class="col-md-6 col-lg-6 col-sm-10">
       <form method="POST">
-        {{ comment_form|crispy }}
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+        {{ comment_form|crispy }} {% csrf_token %}
+        <button type="submit" class="btn" id="signup_btn">Comment</button>
       </form>
     </div>
-
+    <div class="col-md-6 col-lg-6 col-sm-10">
+      <h4>Comments</h4>
+      <hr class="my-2" />
+      {% for comment in blog.blog_comment.all %}
+      <div class="p-2">
+        <i class="fas fa-user mr-2"></i>
+        <a href="{% url 'App_Login:profile' %}" id="comment_user">{{comment.user}}</a>
+        <br />
+        <p class="lead">{{comment.comment}}</p>
+        <p class="text-muted ml-5" style="font-size: 10px">{{comment.comment_date}}</p>
+      </div>
+      {% endfor %}
+      <hr class="my-2" />
+    </div>
   </div>
-  <br>
-  <br>
+</div>
 
-  {% endblock %}
+{% endblock %}
