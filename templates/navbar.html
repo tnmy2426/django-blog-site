@@ -5,7 +5,7 @@
       {% if user.is_authenticated %}
       <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: #95103b">
-          @{{user.username}}
+          <i class="fas fa-user mr-1"></i>{{user.username}}
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="{% url 'App_Blog:create_blog' %}">Write Blog</a>

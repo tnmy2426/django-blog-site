@@ -7,10 +7,10 @@
 </style>
 {% endblock style %} {% block title_block %} {{blog.blog_title}} {% endblock %} {% block body_block %}
 <div class="mb-1">
-  <div class="card bg-dark text-white">
+  <div class="card bg-dark">
     <img class="card-img" src="/static/img/Dhaka.jpg" alt="Card image" />
     <div class="card-img-overlay text-center mt-5" style="color: #323639">
-      <h5 class="card-title display-4 mt-5 font-weight-bold">{{blog.blog_title}}</h5>
+      <h5 class="card-title display-4 mt-5 font-weight-bold text-capitalize">{{blog.blog_title}}</h5>
       <p class="card-text"><i class="fas fa-user mr-1"></i> {{blog.author}} | {{blog.publish_date}}</p>
     </div>
   </div>
@@ -67,7 +67,7 @@
         <a href="{% url 'App_Login:profile' %}" id="comment_user">{{comment.user}}</a>
         <br />
         <p class="lead">{{comment.comment}}</p>
-        <p class="text-muted ml-5" style="font-size: 10px">{{comment.comment_date}}</p>
+        <p class="text-muted text-right" style="font-size: 10px">{{comment.comment_date}}</p>
       </div>
       {% endfor %}
       <hr class="my-2" />

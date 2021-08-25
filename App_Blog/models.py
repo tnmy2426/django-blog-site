@@ -50,4 +50,4 @@ class Likes(models.Model):
         User, on_delete=models.CASCADE, related_name="liker_user")
 
     def __str__(self):
-        return self.user + " likes " + self.blog
+        return str(self.user) + " likes " + str(self.blog)
