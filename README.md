@@ -8,10 +8,12 @@ Commands used:
 Virtual enviroment:
 $ python -m venv env
 
-- env\Scripts\activate {for activate virtual env}
+-  env\Scripts\activate {for activate virtual env}
 
 $ pip install -r requirements.txt
 
 Superuser:
 username: nahdi2426
 pass: tnmy2426
+
+Deployed in Heroku.
