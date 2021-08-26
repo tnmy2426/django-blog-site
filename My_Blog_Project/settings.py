@@ -14,7 +14,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = '#k7@_suq9l_l^%5#(bd(#ax+7s4f#y7)u4wmfc9rq#isquv(1+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["tourgenics-blog.herokuapp.com",]
 
