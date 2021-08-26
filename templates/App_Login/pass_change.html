@@ -1,6 +1,7 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title_block %} Change Pass {% endblock %} {% block body_block %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block style %}{% endblock style %} {% block title_block %} Change
+Password {% endblock %} {% block body_block %}
 <form method="POST">
-  {{ form|crispy }} {% csrf_token %}
-  <button type="submit" class="btn btn-warning btn-sm">Change</button>
+   {{ form|crispy }} {% csrf_token %}
+   <button type="submit" class="btn btn-warning btn-sm">Change</button>
 </form>
 {% endblock %}

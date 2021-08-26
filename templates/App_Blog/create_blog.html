@@ -1,26 +1,26 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %} {% block style %}
 <style>
-  .create_blog_page {
-    width: 800px;
-    border: 1px solid #95103b;
-    padding: 40px;
-  }
-  .heading {
-    font-size: 40px;
-    color: #95103b;
-    font-family: "Overpass", sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
+   .create_blog_page {
+      width: 800px;
+      border: 1px solid #95103b;
+      padding: 40px;
+   }
+   .heading {
+      font-size: 40px;
+      color: #95103b;
+      font-family: "Overpass", sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+   }
 </style>
-{% endblock style %} {% block title_block %} {% endblock %} {% block body_block %}
+{% endblock style %} {% block title_block %} Share Experience {% endblock %} {% block body_block %}
 <h2 class="text-center heading">Share your travelling experience</h2>
 
 <div class="create_blog_page my-5 mx-auto">
-  <form method="POST" enctype="multipart/form-data">
-    {{ form|crispy }} {% csrf_token %}
-    <button type="submit" class="btn mt-3" id="signup_btn" style="width: 100%">Publish</button>
-  </form>
+   <form method="POST" enctype="multipart/form-data">
+      {{ form|crispy }} {% csrf_token %}
+      <button type="submit" class="btn mt-3" id="signup_btn" style="width: 100%">Publish</button>
+   </form>
 </div>
 
 {% endblock %}
