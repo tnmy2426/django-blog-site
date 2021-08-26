@@ -1,12 +1,11 @@
-import os
 import django_heroku
+import os
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
-
-django_heroku.settings(locals())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -15,9 +14,9 @@ django_heroku.settings(locals())
 SECRET_KEY = '#k7@_suq9l_l^%5#(bd(#ax+7s4f#y7)u4wmfc9rq#isquv(1+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["tourgenics-blog.herokuapp.com",]
 
 
 # Application definition
@@ -133,3 +132,5 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_URL = '/account/login/'
+
+django_heroku.settings(locals())
