@@ -8,7 +8,7 @@
 {% endblock style %} {% block title_block %} {{blog.blog_title}} {% endblock %} {% block body_block %}
 <div class="mb-1">
    <div class="card bg-dark">
-      <img class="card-img" src="media/{{blog.blog_image}}" alt="Card image" />
+      <img class="card-img" src="/media/{{blog.blog_image}}" alt="Card image" />
       <div class="card-img-overlay text-center mt-5" style="color: #323639">
          <h5 class="card-title display-4 mt-5 font-weight-bold text-capitalize">{{blog.blog_title}}</h5>
          <p class="card-text"><i class="fas fa-user mr-1"></i> {{blog.author}} | {{blog.publish_date}}</p>
@@ -46,7 +46,7 @@
          <p class="card-text">{{blog.blog_content|linebreaks}}</p>
          <br />
       </div>
-      <img class="card-img-top img-fluid" src="media/{{blog.blog_image}}" alt="Blog Image" />
+      <img class="card-img-top img-fluid" src="/media/{{blog.blog_image}}" alt="Blog Image" />
    </div>
 </div>
 <hr class="my-4" />
