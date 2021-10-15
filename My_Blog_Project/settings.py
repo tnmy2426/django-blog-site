@@ -14,7 +14,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = '#k7@_suq9l_l^%5#(bd(#ax+7s4f#y7)u4wmfc9rq#isquv(1+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["tourgenics-blog.herokuapp.com",]
 
@@ -81,7 +81,6 @@ DATABASES = {
     }
 }
 
-
 import dj_database_url
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
@@ -135,3 +134,9 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/account/login/'
 
 django_heroku.settings(locals())
+
+#  Deployed project can't be run local computer, so created a new file local_settings so that we can say try this either that
+try:
+    from .locale_settings import *
+except ImportError:
+    print("Looks like no local host, there must be in production host!")
