@@ -17,12 +17,12 @@
    <h2 class="profile_heading">Your Profile</h2>
    <br />
    {% if user.user_profile %}
-   <img src="/media/{{user.user_profile.profile_pic}}" class="rounded-circle" width="200px" />
+   <img src="media/{{user.user_profile.profile_pic}}" class="rounded-circle" width="200px" />
    <br />
    <br />
    <a href="{% url 'App_Login:change_pro_pic' %}" class="btn btn-info btn-md">Change Profile Picture</a>
    {% else %}
-   <img src="/media/default.jpg" class="rounded-circle" width="200px" />
+   <img src="media/default.jpg" class="rounded-circle" width="200px" />
    <br />
    <br />
    <a href="{% url 'App_Login:add_pro_pic' %}" class="btn btn-info btn-md">Change Profile Picture</a>
