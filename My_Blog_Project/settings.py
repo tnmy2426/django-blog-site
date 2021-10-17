@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'App_Blog',
     'App_Login',
     'crispy_forms',
@@ -128,6 +130,15 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_URL = '/account/login/'
+
+# For cloud database for media files
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dykdjtibn',
+    'API_KEY': '923876422815836',
+    'API_SECRET': '6ZrFrKAtDPWYzGpm0db7o3sZxv8'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 #  Deployed project can't be run local computer, so created a new file local_settings so that we can say try this either that
 try:
